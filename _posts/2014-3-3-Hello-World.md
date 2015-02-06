@@ -5,9 +5,8 @@ published: true
 ---
 
 Import modules and set up equations.
-{% highlight javascript %}
+{% highlight python %}
 
-```python
 import numpy as np
 np.seterr(all = 'ignore')
 
@@ -20,7 +19,6 @@ def sigmoid(x):
 # derivative of sigmoid
 def dsigmoid(x):
     return sigmoid(x) * (1.0 - sigmoid(x))
-```
 {% endhighlight %}
 
 ----
