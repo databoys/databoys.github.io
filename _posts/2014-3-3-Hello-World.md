@@ -5,6 +5,7 @@ published: true
 ---
 
 Import modules and set up equations.
+{% highlight javascript %}
 
 ```python
 import numpy as np
@@ -20,8 +21,12 @@ def sigmoid(x):
 def dsigmoid(x):
     return sigmoid(x) * (1.0 - sigmoid(x))
 ```
+{% endhighlight %}
 
-We will make the neural network into a class so it can be used like a sklearn module and initialize the layers. 
+----
+****
+
+> We will make the neural network into a class so it can be used like a sklearn module and initialize the layers. 
 
 ```python
 class MLP_NeuralNetwork(object):
@@ -50,6 +55,9 @@ class MLP_NeuralNetwork(object):
         self.co = np.zeros((self.hidden, self.output))
         
 ```
+
+----
+****
 
 The very first thing that a neural network does is push the input data through the network using the randomized weights that we set up when we initialized. We will call that 'feedForward' because we are feeding the data forward through the network with the current weights. 
 

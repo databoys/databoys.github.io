@@ -22,11 +22,11 @@ footer-links:
   facebook: 
   flickr: 
   github: https://github.com/FlorianMuellerklein/Machine-Learning
+  github: https://github.com/ShyneColdchain
   instagram: 
   linkedin: 
   pinterest: 
   rss: # just type anything here for a working RSS icon, make sure you set the "url" above!
-  github: https://github.com/ShyneColdchain
   twitter: jekyllrb
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
 
