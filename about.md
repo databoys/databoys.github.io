@@ -1,15 +1,19 @@
 ---
 layout: page
-title: About
+title: Data Boys
 permalink: /about/
 ---
 
-Some information about you!
+We are Florian and Oliver: two brothers who are obsessed with data science. Our interests are data analysis, visualization, modeling, and who knows what else! 
 
-### More Information
+### Wanna see more?
 
-A place to include any other types of information that you'd like to include about yourself. 
+See some of Oliver's work at [his site](http://olivermuellerklein.com)    
+ and [github](https://github.com/ShyneColdchain)! 
+ 
+And Florian's [git](https://github.com/FlorianMuellerklein)
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[olivermuellerklein@gmail.com](mailto:olivermuellerklein@gmail.com)
+[fmuellerklein@gmail.com](mailto:fmuellerklein@gmail.com)
