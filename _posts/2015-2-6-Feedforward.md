@@ -81,3 +81,56 @@ So now it's time to make some predictions. What we will do is feed all of the da
 ```
 
 The input activations are just the input features. But, for each other layer the activations become the sum of the previous layers activations multiplied by their corresponding weights which are then fed into the sigmoid. 
+
+On the first pass our predictions will be pretty bad. So we'll use a very familiar concept, gradient descent. This is the part that I get excited about because I think the math is really clever. Unlike with gradient descent for a linear model we need to use a little bit of calculus for a neural network. Which is why we wrote the function for the derivative of the sigmoid function at the beginning. 
+
+Our backpropagation algorithm begins by computing the error of our predicted output against the true output. We then take the derivative of the sigmoid on the output activations (predicted values) in order to get the direction (slope) of the gradient and multiply that value by the error. Which gives us the magnitude of the error and which direction the hidden weights need to be changed in order to correct it. We then move on to the hidden layer and calculate the error of hidden layer weights based on the magnitude and error calculated previously. Because the output layer is a function of the weights of the hidden layer. Using that error and the derivative of the sigmoid on the hidden layer activations we calculate how much and in which direction the weights need to change for the input layer.
+
+Now that we have the values for how much we want to change the rates and in what direction we move on actually doing that. We update the weights connecting each layer. We do this by multiplying the current weights by a learning rate constand and the magnitude and direction for the corresponding layer of weights. Just like in linear models we use a learning rate constant to make small changes at each step so that we have a better chance at finding the true values for the weights taht minimize the cost function. 
+
+``` python
+	def backPropagate(self, targets, N):
+	"""
+    :param targets: y values
+    :param N: learning rate
+    :return: updated weights and current error
+    """
+    if len(targets) != self.output:
+        raise ValueError('Wrong number of targets you silly goose!')
+
+    # calculate error terms for output
+    # the delta tell you which direction to change the weights
+    output_deltas = [0.0] * self.output
+    for k in range(self.output):
+        error = targets[k] - self.ao[k]
+        output_deltas[k] = dsigmoid(self.ao[k]) * error
+
+    # calculate error terms for hidden
+    # delta tells you which direction to change the weights
+    hidden_deltas = [0.0] * self.hidden
+    for j in range(self.output):
+        error = 0.0
+        for k in range(self.output):
+            error += output_deltas[k] * self.wo[j][k]
+        hidden_deltas[k] = dsigmoid(self.ah[j]) * error
+
+    # update the weights connecting hidden to output
+    for j in range(self.hidden):
+        for k in range(self.output):
+            change = output_deltas[k] * self.ah[j]
+            self.wo[j][k] += N * change + self.co[j][k]
+            self.co[j][k] = change
+
+    # update the weights connecting input to hidden
+    for i in range(self.input):
+        for j in range(self.hidden):
+            change = hidden_deltas[j] * self.ai[i]
+            self.wi[i][j] += N * change + self.ci[i][j]
+            self.ci[i][j] = change
+
+    # calculate error
+    error = 0.0
+    for k in range(len(targets)):
+        error += 0.5 * (targets[k] - self.ao[k]) ** 2
+    return error
+```
