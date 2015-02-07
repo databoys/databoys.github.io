@@ -9,11 +9,11 @@ We are Florian and Oliver: two brothers who are obsessed with data science. Our 
 ### Wanna see more?
 
 See some of Oliver's work at [his site](http://olivermuellerklein.com)    
- and [github](https://github.com/ShyneColdchain)! 
  
-And Florian's [git](https://github.com/FlorianMuellerklein)
+[Florian's github](https://github.com/FlorianMuellerklein) and [Oliver's github](https://github.com/ShyneColdchain)! 
 
-### Contact me
+### Contact us!
 
-[olivermuellerklein@gmail.com](mailto:olivermuellerklein@gmail.com)
-[fmuellerklein@gmail.com](mailto:fmuellerklein@gmail.com)
+Florian: [fmuellerklein@gmail.com](mailto:fmuellerklein@gmail.com)
+
+Oliver: [olivermuellerklein@gmail.com](mailto:olivermuellerklein@gmail.com)
