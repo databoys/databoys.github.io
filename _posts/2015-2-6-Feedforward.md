@@ -8,7 +8,7 @@ Neural networks are a pretty badass machine learning algorithm for classificatio
 
 First, we can think of every neuron as having an activation function. We will use the sigmoid function, which should be very familiar because of logistic regression. Unlike logistic regression, we will also need the derivative of the sigmoid function when using a neural net. 
 
-'''python
+''' python
 import numpy as np
 
 def sigmoid(x):
@@ -24,7 +24,7 @@ Much like logistic regression, the sigmoid function in a neural network will gen
 
 Next we will set up the network and initialize some parameters. 
 
-'''python
+''' python
 class MLP_NeuralNetwork(object):
     def __init__(self, input, hidden, output):
         """
@@ -54,7 +54,7 @@ We are going to do all of these calculations with matricies because it's much ea
 
 So now it's time to make some predictions. What we will do is feed all of the data forward through the network with the random weights and generate some (bad) predictions. Later, each time the predictions are made we calculate how wrong the predictions are and in what direction we need to change the weights in order to make the predictions better. We will do this many many times as the weights get updated so we'll make a feed forward function that can be called over and over again.
 
-'''python
+''' python
 	def feedForward(self, inputs):
        if len(inputs) != self.input-1:
             raise ValueError('Wrong number of inputs you silly goose!')
