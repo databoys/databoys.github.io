@@ -38,7 +38,7 @@ We have:
 
 Instead of age classes, Lefkovitch Matrix Models use stage classes. They just group things differently! We will use the following information for our model:  
 
-1. number of individuals within each age stage: 
+#1. number of individuals within each age stage: 
 
 > n0 = 100 (100 year 0)
 
@@ -48,7 +48,7 @@ Instead of age classes, Lefkovitch Matrix Models use stage classes. They just gr
 
 > n5-20 = 189
 
-2. probability of surviving each age:
+#2. probability of surviving each age:
 
 > L0 = 0.5 (50% survival rate in year 0)
 
@@ -58,7 +58,7 @@ Instead of age classes, Lefkovitch Matrix Models use stage classes. They just gr
 
 > L5-20 (or Ladult) = 0.95
 
-3. number of offspring produced on average per stage
+#3. number of offspring produced on average per stage
 
 > m0 = 0
 
@@ -68,7 +68,7 @@ Instead of age classes, Lefkovitch Matrix Models use stage classes. They just gr
 
 > m5-20 = 2
 
-4. probability of surviving into next stage (note: not within stage...)
+#4. probability of surviving into next stage (note: not within stage...)
 
 > p0 = 0.5 (survive year 0 to year 1)
 
@@ -76,7 +76,7 @@ Instead of age classes, Lefkovitch Matrix Models use stage classes. They just gr
 
 > p2 = 0.8 (survive year 4 to year 5)
 
-5. probability of surviving within immature and adult stages
+#5. probability of surviving within immature and adult stages
 
 G(imm) = sum all individual immatures from ages 2 to 3 * probability of surviving each age over all ages 2 to 4 * probability of surviving each age. This accounts for year 2 becoming year 3 and year 3 becoming year 4 but NOT year 4 becoming year 5 (that is a stage change).
 
@@ -97,7 +97,7 @@ Since roughly 95% of the birds in years 5 - 20 survive...
 
 Note: the last in the denominator (10 * 0.1) was because it is speculated that some Bald Eagles live past 20 years of age. Thus, 10% of the 10 20 year olds in this model survive to the next year. This, of course, leaves out any bird older than 21. 
 
-6. Lastly, F values for weighted fecundity: 
+#6. Lastly, F values for weighted fecundity: 
 
 > Fi = (P i - 1)(mi)
 
