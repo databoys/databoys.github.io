@@ -9,7 +9,7 @@ Neural networks are a pretty badass machine learning algorithm for classificatio
 First, we can think of every neuron as having an activation function. This function determines whether the neuron is ‘on’ or ‘off’ – fires or not. We will use the sigmoid function, which should be very familiar because of logistic regression. Unlike logistic regression, we will also need the derivative of the sigmoid function when using a neural net.
 
 ``` python
-import numpy as np
+<sub><sup>import numpy as np</sup></sub>
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
