@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Neural Network with numpy
+title: Neural network with numpy
 published: true
 ---
 
