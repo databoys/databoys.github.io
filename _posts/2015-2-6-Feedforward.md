@@ -4,7 +4,7 @@ title: Neural Network with numpy
 published: true
 ---
 
-Neural networks are a pretty badass machine learning algorithm for classification. For me, they seemed pretty intimidating to try to learn but when I finally buckled down and got into them it wasn't so bad. They are called neural networks because they are loosely based on how the brain's neurons work.  However, they are essentially a group of linear models. There is a lot of good information about the math and structure of these algorithms so I will skip that here. Instead I will outline the steps to writing one in python with numpy and hopefully explain it very clearly. The code here is heavily based on the neural network code provided in ['Programming Collective Intelligence'](http://shop.oreilly.com/product/9780596529321.do) I tweaked it a little to make it usable with any dataset as long as the input data is formatted correctly. 
+Neural networks are a pretty badass machine learning algorithm for classification. For me, they seemed pretty intimidating to try to learn but when I finally buckled down and got into them it wasn't so bad. They are called neural networks because they are loosely based on how the brain's neurons work.  However, they are essentially a group of linear models. There is a lot of good information about the math and structure of these algorithms so I will skip that here. Instead I will outline the steps to writing one in python with numpy and hopefully explain it very clearly. The code here is heavily based on the neural network code provided in ['Programming Collective Intelligence'](http://shop.oreilly.com/product/9780596529321.do), I tweaked it a little to make it usable with any dataset as long as the input data is formatted correctly. 
 
 First, we can think of every neuron as having an activation function. This function determines whether the neuron is ‘on’ or ‘off’ – fires or not. We will use the sigmoid function, which should be very familiar because of logistic regression. Unlike logistic regression, we will also need the derivative of the sigmoid function when using a neural net.
 
@@ -22,7 +22,7 @@ def dsigmoid(x):
 
 Much like logistic regression, the sigmoid function in a neural network will generate the end point (activation) of inputs multiplied by their weights. For example, lets say we had two columns (features) of input data and one hidden node (neuron) in our neural network. Each feature would be multiplied by its corresponding weight value and then added together and passed through the sigmoid (just like a logistic regression). To take that simple example and turn it into a neural network we just add more hidden units. In addition to adding more hidden units, we add a path from every input feature to each of those hidden units where it is multiplied by its corresponding weight. Each hidden unit takes the sum of it's inputs * weights and passes that through the sigmoid resulting in that unit's activation. 
 
-Next we will set up the network and initialize some parameters. 
+Next we will set up the arrays to hold the data for network and initialize some parameters. 
 
 ``` python
 class MLP_NeuralNetwork(object):
@@ -81,15 +81,15 @@ So now it's time to make some predictions. What we will do is feed all of the da
         return self.ao[:]
 ```
 
-The input activations are just the input features. But, for each other layer the activations become the sum of the previous layers activations multiplied by their corresponding weights, which are then fed into the sigmoid. 
+The input activations are just the input features. But, for each other layer the activations become the sum of the previous layers activations multiplied by their corresponding weights fed into the sigmoid. 
 
-On the first pass our predictions will be pretty bad. So we'll use a very familiar concept, gradient descent. This is the part that I get excited about because I think the math is really clever. Unlike with gradient descent for a linear model we need to use a little bit of calculus for a neural network. Which is why we wrote the function for the derivative of the sigmoid function at the beginning. 
+On the first pass our predictions will be pretty bad. So we'll use a very familiar concept, gradient descent. This is the part that I get excited about because I think the math is really clever. Unlike gradient descent for a linear model we need to use a little bit of calculus for a neural network. Which is why we wrote the function for the derivative of the sigmoid function at the beginning. 
 
 Our backpropagation algorithm begins by computing the error of our predicted output against the true output. We then take the derivative of the sigmoid on the output activations (predicted values) in order to get the direction (slope) of the gradient and multiply that value by the error. Which gives us the magnitude of the error and which direction the hidden weights need to be changed in order to correct it. We then move on to the hidden layer and calculate the error of hidden layer weights based on the magnitude and error calculated previously. 
 
 Using that error and the derivative of the sigmoid on the hidden layer activations we calculate how much and in which direction the weights need to change for the input layer.
 
-Now that we have the values for how much we want to change the rates and in what direction we move on actually doing that. We update the weights connecting each layer. We do this by multiplying the current weights by a learning rate constant and the magnitude and direction for the corresponding layer of weights. Just like in linear models we use a learning rate constant to make small changes at each step so that we have a better chance at finding the true values for the weights that minimize the cost function.
+Now that we have the values for how much we want to change the rates and in what direction we move on to actually doing that. We update the weights connecting each layer. We do this by multiplying the current weights by a learning rate constant and the magnitude and direction for the corresponding layer of weights. Just like in linear models we use a learning rate constant to make small changes at each step so that we have a better chance at finding the true values for the weights that minimize the cost function.
  
 
 ``` python
@@ -167,4 +167,4 @@ Finally, for the predict function. We just simply call the feedForward function 
         return predictions
 ```
 
-That's basically it! You can see the full code along [here](https://github.com/FlorianMuellerklein/Machine-Learning/blob/master/BackPropagationNN.py).
+That's basically it! You can see the full code [here](https://github.com/FlorianMuellerklein/Machine-Learning/blob/master/BackPropagationNN.py).
