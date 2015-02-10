@@ -53,8 +53,6 @@ class MLP_NeuralNetwork(object):
 
 We are going to do all of these calculations with matricies because they are fast and super easy to read. Our class will take three inputs; the size of the input layer (# features), the size of the hidden layer (variable parameter to be tuned), and the number of the output layer (# of possible classes). We set up an array of 1s as a placeholder for the unit activations and an array of 0s as a placeholder for the layer changes. One important thing to note is that we initialized all of the weights to random numbers. It's important for the weights to be random otherwise we won't be able to tune the network. If all of the weights are the same then all of the hidden units will be the same and you'll be screwed. 
 
-> Note: initialize all of the weights to random numbers
-
 So now it's time to make some predictions. What we will do is feed all of the data forward through the network with the random weights and generate some (bad) predictions. Later, each time the predictions are made we calculate how wrong the predictions are and in what direction we need to change the weights in order to make the predictions better (i.e. error). We will do this many, many … MANY times as the weights get updated so we'll make a feed forward function that can be called over and over again.
 
 
@@ -89,8 +87,6 @@ The input activations are just the input features. But, for each other layer the
 On the first pass our predictions will be pretty bad. So we'll use a very familiar concept, gradient descent. This is the part that I get excited about because I think the math is really clever. Unlike with gradient descent for a linear model we need to use a little bit of calculus for a neural network. Which is why we wrote the function for the derivative of the sigmoid function at the beginning. 
 
 Our backpropagation algorithm begins by computing the error of our predicted output against the true output. We then take the derivative of the sigmoid on the output activations (predicted values) in order to get the direction (slope) of the gradient and multiply that value by the error. Which gives us the magnitude of the error and which direction the hidden weights need to be changed in order to correct it. We then move on to the hidden layer and calculate the error of hidden layer weights based on the magnitude and error calculated previously. 
-
-> Because the output layer is a function of the weights of the hidden layer. 
 
 Using that error and the derivative of the sigmoid on the hidden layer activations we calculate how much and in which direction the weights need to change for the input layer.
 
@@ -143,3 +139,33 @@ Now that we have the values for how much we want to change the rates and in what
         error += 0.5 * (targets[k] - self.ao[k]) ** 2
     return error
 ```
+
+Alright, lets tie it all together and create training and prediction functions. The steps to training the network are pretty straight forward and intuitive. We first call the 'feedForward' function which gives us the outputs with the randomized weights that we initialized. Then we call the backpropagation algorithm to tune and update the weights to make better predictions. Then the feedForward function is called again but this time it uses the updated weights and the predictions are a little better. We keep this cycle going for a predeterimined amount of iterations during which we should see the error drop close to 0. 
+
+``` python
+    def train(self, patterns, iterations = 3000, N = 0.0002):
+        # N: learning rate
+        for i in range(iterations):
+            error = 0.0
+            for p in patterns:
+                inputs = p[0]
+                targets = p[1]
+                self.feedForward(inputs)
+                error = self.backPropagate(targets, N)
+            if i % 500 == 0:
+                print('error %-.5f' % error)
+```
+Finally, for the predict function. We just simply call the feedForward function which will return the activation of the output layer. Remember, the activation of each layer is a linear combination of the output of the previous layer * the corresponding weights pushed through the sigmoid. 
+
+``` python
+    def predict(self, X):
+        """
+        return list of predictions after training algorithm
+        """
+        predictions = []
+        for p in X:
+            predictions.append(self.feedForward(p))
+        return predictions
+```
+
+That's basically it! You can see the full code along here: https://github.com/FlorianMuellerklein/Machine-Learning/blob/master/BackPropagationNN.py
