@@ -7,7 +7,7 @@ published: true
 Neural networks are a pretty badass machine learning algorithm for classification. For me, they seemed pretty intimidating to try to learn but when I finally buckled down and got into them it wasn't so bad. They are called neural networks because they are loosely based on how the brain's neurons work.  However, they are essentially a group of linear models. There is a lot of good information about the math and structure of these algorithms so I will skip that here. Instead I will outline the steps to writing one in python with numpy and hopefully explain it very clearly.
 
 First, we can think of every neuron as having an activation function. This function determines whether the neuron is ‘on’ or ‘off’ – fires or not. We will use the sigmoid function, which should be very familiar because of logistic regression. Unlike logistic regression, we will also need the derivative of the sigmoid function when using a neural net.
-
+<small>
 ``` python
 import numpy as np
 
@@ -19,7 +19,7 @@ def dsigmoid(x):
     return sigmoid(x) * (1.0 - sigmoid(x))
 	
 ```
-
+</small>
 Much like logistic regression, the sigmoid function in a neural network will generate the end point (activation) of inputs multiplied by their weights. For example, lets say we had two columns (features) of input data and one hidden node (neuron) in our neural network. Each feature would be multiplied by its corresponding weight value and then added together and passed through the sigmoid (just like a logistic regression). To take that simple example and turn it into a neural network we just add more hidden units. In addition to adding more hidden units, we add a path from every input feature to each of those hidden units where it is multiplied by its corresponding weight. Each hidden unit takes the sum of it's inputs * weights and passes that through the sigmoid resulting in that unit's activation. 
 
 Next we will set up the network and initialize some parameters. 
