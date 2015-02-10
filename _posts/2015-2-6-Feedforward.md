@@ -4,9 +4,9 @@ title: Neural Network with numpy
 published: true
 ---
 
-**Neural networks are a pretty badass machine learning algorithm for classification. For me, they seemed pretty intimidating to try to learn but when I finally buckled down and got into them it wasn't so bad. They are called neural networks because they are loosely based on how the brain's neurons work.  However, they are essentially a group of linear models. There is a lot of good information about the math and structure of these algorithms so I will skip that here. Instead I will outline the steps to writing one in python with numpy and hopefully explain it very clearly. 
+**Neural networks are a pretty badass machine learning algorithm for classification. For me, they seemed pretty intimidating to try to learn but when I finally buckled down and got into them it wasn't so bad. They are called neural networks because they are loosely based on how the brain's neurons work.  However, they are essentially a group of linear models. There is a lot of good information about the math and structure of these algorithms so I will skip that here. Instead I will outline the steps to writing one in python with numpy and hopefully explain it very clearly.** 
 
-First, we can think of every neuron as having an activation function. This function determines whether the neuron is ‘on’ or ‘off’ – fires or not. We will use the sigmoid function, which should be very familiar because of logistic regression. Unlike logistic regression, we will also need the derivative of the sigmoid function when using a neural net.**
+**First, we can think of every neuron as having an activation function. This function determines whether the neuron is ‘on’ or ‘off’ – fires or not. We will use the sigmoid function, which should be very familiar because of logistic regression. Unlike logistic regression, we will also need the derivative of the sigmoid function when using a neural net.**
 
 ``` python
 import numpy as np
