@@ -168,4 +168,4 @@ Finally, for the predict function. We just simply call the feedForward function 
         return predictions
 ```
 
-That's basically it! You can see the full code along here: https://github.com/FlorianMuellerklein/Machine-Learning/blob/master/BackPropagationNN.py
+That's basically it! You can see the full code along [here](https://github.com/FlorianMuellerklein/Machine-Learning/blob/master/BackPropagationNN.py).
