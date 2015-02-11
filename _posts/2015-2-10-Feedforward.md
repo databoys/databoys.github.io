@@ -42,8 +42,8 @@ class MLP_NeuralNetwork(object):
         self.ao = [1.0] * self.output
 
         # create randomized weights
-        self.wi = np.random.randn(self.input, self.hidden) # weight vector going from input to hidden
-        self.wo = np.random.randn(self.hidden, self.output)  # weight vector going from hidden to output
+        self.wi = np.random.randn(self.input, self.hidden) 
+        self.wo = np.random.randn(self.hidden, self.output) 
 
         # create arrays of 0 for changes
         self.ci = np.zeros((self.input, self.hidden))
