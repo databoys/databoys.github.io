@@ -168,3 +168,22 @@ Finally, for the predict function. We just simply call the feedForward function 
 ```
 
 That's basically it! You can see the full code [here](https://github.com/FlorianMuellerklein/Machine-Learning/blob/master/BackPropagationNN.py).
+
+I ran this code on the digit recognition dataset provided by sklearn and it finished with an accuracy of 97%. I'd say that's pretty successful!
+
+```
+             precision    recall  f1-score   support
+
+          0       0.98      0.96      0.97        49
+          1       0.92      0.97      0.95        36
+          2       1.00      1.00      1.00        43
+          3       0.95      0.88      0.91        41
+          4       0.98      1.00      0.99        47
+          5       0.96      1.00      0.98        46
+          6       1.00      1.00      1.00        47
+          7       0.98      0.96      0.97        46
+          8       0.93      0.80      0.86        49
+          9       1.00      0.91      0.95        46
+
+avg / total       0.97      0.95      0.96       450
+```
