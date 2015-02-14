@@ -93,50 +93,50 @@ Now that we have the values for how much we want to change the rates and in what
  
 
 ``` python
-def backPropagate(self, targets, N):
-	"""
-    :param targets: y values
-    :param N: learning rate
-    :return: updated weights and current error
-    """
-    if len(targets) != self.output:
-        raise ValueError('Wrong number of targets you silly goose!')
+	def backPropagate(self, targets, N):
+		"""
+	    :param targets: y values
+	    :param N: learning rate
+	    :return: updated weights and current error
+	    """
+	    if len(targets) != self.output:
+	        raise ValueError('Wrong number of targets you silly goose!')
 
-    # calculate error terms for output
-    # the delta tell you which direction to change the weights
-    output_deltas = [0.0] * self.output
-    for k in range(self.output):
-        error = targets[k] - self.ao[k]
-        output_deltas[k] = dsigmoid(self.ao[k]) * error
+	    # calculate error terms for output
+	    # the delta tell you which direction to change the weights
+	    output_deltas = [0.0] * self.output
+	    for k in range(self.output):
+	        error = targets[k] - self.ao[k]
+	        output_deltas[k] = dsigmoid(self.ao[k]) * error
 
-    # calculate error terms for hidden
-    # delta tells you which direction to change the weights
-    hidden_deltas = [0.0] * self.hidden
-    for j in range(self.output):
-        error = 0.0
-        for k in range(self.output):
-            error += output_deltas[k] * self.wo[j][k]
-        hidden_deltas[k] = dsigmoid(self.ah[j]) * error
+	    # calculate error terms for hidden
+	    # delta tells you which direction to change the weights
+	    hidden_deltas = [0.0] * self.hidden
+	    for j in range(self.output):
+	        error = 0.0
+	        for k in range(self.output):
+	            error += output_deltas[k] * self.wo[j][k]
+	        hidden_deltas[k] = dsigmoid(self.ah[j]) * error
 
-    # update the weights connecting hidden to output
-    for j in range(self.hidden):
-        for k in range(self.output):
-            change = output_deltas[k] * self.ah[j]
-            self.wo[j][k] += N * change + self.co[j][k]
-            self.co[j][k] = change
+	    # update the weights connecting hidden to output
+	    for j in range(self.hidden):
+	        for k in range(self.output):
+	            change = output_deltas[k] * self.ah[j]
+	            self.wo[j][k] += N * change + self.co[j][k]
+	            self.co[j][k] = change
 
-    # update the weights connecting input to hidden
-    for i in range(self.input):
-        for j in range(self.hidden):
-            change = hidden_deltas[j] * self.ai[i]
-            self.wi[i][j] += N * change + self.ci[i][j]
-            self.ci[i][j] = change
+	    # update the weights connecting input to hidden
+	    for i in range(self.input):
+	        for j in range(self.hidden):
+	            change = hidden_deltas[j] * self.ai[i]
+	            self.wi[i][j] += N * change + self.ci[i][j]
+	            self.ci[i][j] = change
 
-    # calculate error
-    error = 0.0
-    for k in range(len(targets)):
-        error += 0.5 * (targets[k] - self.ao[k]) ** 2
-    return error
+	    # calculate error
+	    error = 0.0
+	    for k in range(len(targets)):
+	        error += 0.5 * (targets[k] - self.ao[k]) ** 2
+	    return error
 ```
 
 Alright, lets tie it all together and create training and prediction functions. The steps to training the network are pretty straight forward and intuitive. We first call the 'feedForward' function which gives us the outputs with the randomized weights that we initialized. Then we call the backpropagation algorithm to tune and update the weights to make better predictions. Then the feedForward function is called again but this time it uses the updated weights and the predictions are a little better. We keep this cycle going for a predeterimined amount of iterations during which we should see the error drop close to 0. 
