@@ -12,7 +12,6 @@ First, we can think of every neuron as having an activation function. This funct
 import numpy as np
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
-
 # derivative of sigmoid
 def dsigmoid(x):
     return sigmoid(x) * (1.0 - sigmoid(x))	
@@ -33,16 +32,13 @@ class MLP_NeuralNetwork(object):
         self.input = input + 1 # add 1 for bias node
         self.hidden = hidden
         self.output = output
-
         # set up array of 1s for activations
         self.ai = [1.0] * self.input
         self.ah = [1.0] * self.hidden
         self.ao = [1.0] * self.output
-
         # create randomized weights
         self.wi = np.random.randn(self.input, self.hidden) 
         self.wo = np.random.randn(self.hidden, self.output) 
-
         # create arrays of 0 for changes
         self.ci = np.zeros((self.input, self.hidden))
         self.co = np.zeros((self.hidden, self.output))
