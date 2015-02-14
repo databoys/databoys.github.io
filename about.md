@@ -1,19 +1,19 @@
 ---
 layout: page
-title: Data Boys
+title: About Pixyll
 permalink: /about/
 ---
 
-We are Florian and Oliver: two brothers who are obsessed with data science. Our interests are data analysis, visualization, modeling, and who knows what else! 
+This Jekyll theme was crafted with <3 by [John Otander](http://johnotander.com)
+([@4lpine](https://twitter.com/4lpine)).
 
-### Wanna see more?
+Checkout the [Github repository](https://github.com/johnotander/pixyll) to download it,
+request a feature, report a bug, or contribute. It's free, and open source
+([MIT](http://opensource.org/licenses/MIT)).
 
-See some of Oliver's work at [his site](http://olivermuellerklein.com)    
- 
-[Florian's github](https://github.com/FlorianMuellerklein) and [Oliver's github](https://github.com/ShyneColdchain)! 
+Thanks to the following:
 
-### Contact us!
-
-Florian: [fmuellerklein@gmail.com](mailto:fmuellerklein@gmail.com)
-
-Oliver: [olivermuellerklein@gmail.com](mailto:olivermuellerklein@gmail.com)
+* [BASSCSS](http://basscss.com)
+* [Jekyll](http://jekyllrb.com)
+* [Refills](http://refills.bourbon.io/)
+* [Solarized](http://ethanschoonover.com/solarized)
