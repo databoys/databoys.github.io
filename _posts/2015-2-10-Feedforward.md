@@ -93,7 +93,7 @@ Now that we have the values for how much we want to change the rates and in what
  
 
 ``` python
-	def backPropagate(self, targets, N):
+def backPropagate(self, targets, N):
 	"""
     :param targets: y values
     :param N: learning rate
