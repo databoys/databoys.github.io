@@ -104,7 +104,7 @@ def backPropagate(self, targets, N):
         error = 0.0
         for k in range(self.output):
             error += output_deltas[k] * self.wo[j][k]
-        hidden_deltas[k] = dsigmoid(self.ah[j]) * error
+        hidden_deltas[j] = dsigmoid(self.ah[j]) * error
     # update the weights connecting hidden to output
     for j in range(self.hidden):
         for k in range(self.output):
