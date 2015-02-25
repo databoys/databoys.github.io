@@ -13,8 +13,10 @@ import numpy as np
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 # derivative of sigmoid
-def dsigmoid(x):
-    return sigmoid(x) * (1.0 - sigmoid(x))	
+# sigmoid(y) * (1.0 - sigmoid(y))
+# the way we use this y is already sigmoided
+def dsigmoid(y):
+    return y * (1.0 - y)	
 ```
 
 Much like logistic regression, the sigmoid function in a neural network will generate the end point (activation) of inputs multiplied by their weights. For example, lets say we had two columns (features) of input data and one hidden node (neuron) in our neural network. Each feature would be multiplied by its corresponding weight value and then added together and passed through the sigmoid (just like a logistic regression). To take that simple example and turn it into a neural network we just add more hidden units. In addition to adding more hidden units, we add a path from every input feature to each of those hidden units where it is multiplied by its corresponding weight. Each hidden unit takes the sum of it's inputs * weights and passes that through the sigmoid resulting in that unit's activation. 
