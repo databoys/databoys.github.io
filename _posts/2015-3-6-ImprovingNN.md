@@ -118,7 +118,7 @@ As you can see we just added a regularization term in the back propagation algor
 
 So there are the four things that have greatly improved the performance of my neural network. Obviously there is still a lot that can be added but these offer pretty big improvements for very little effort. 
 
-Just like the last neural network post, I did not go into the math behind all of this. If you would like to take your understanding of neural networks to the next level the [Stanford deep learning tutorial](http://ufldl.stanford.edu/tutorial/) is my favorite website right now. It offers a much more indepth look at all of the algorithms for neural networks than my posts here. I find it very helpful to match each equation in the 'Multi-Layer Neural Network' tutorial with each snippet of code in my neural network script. 
+Just like the last neural network post, I did not go into the math behind all of this. If you would like to take your understanding of neural networks to the next level the [Stanford deep learning tutorial](http://ufldl.stanford.edu/tutorial/) is my favorite website right now. It offers a much more indepth look at all of the algorithms for neural networks than my posts here. I find it very helpful to match each equation in the 'Multi-Layer Neural Network' tutorial with each snippet of code in my neural network script. It makes the underlying math much easier to digest.
 
 Additionally, many more ways to improve the training of neural networks are outlined in ['Efficient Backprop'](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf) by LeCun et al. Most of what I outlined here came from that paper. 
 
