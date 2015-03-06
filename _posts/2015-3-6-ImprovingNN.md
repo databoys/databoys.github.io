@@ -94,11 +94,31 @@ def fit(self, patterns):
 			backprop_function(y)
 ```
 
+##Regularization
+
+Keeping in line with the overall theme of low weight values another handy trick is to add regularization in the form of weight decay. This is very similar to the l2 regularization used in linear models. For this neural network I initialized a regularization term for both the input to hidden weights and the hidden to output weights. This way there is more flexibility for fine tuning. Basically, regularization introduces a penalty for large weights which will in turn push the values of the weights toward zero. Adding this to the network is very easy and straightforward. 
+
+``` python
+# update the weights connecting hidden to output, change == partial derivative
+change = output_deltas * np.reshape(self.ah, (self.ah.shape[0],1))
+regularization = self.l2_out * self.wo
+self.wo -= self.learning_rate * (change + regularization) + self.co * self.momentum 
+self.co = change 
+
+# update the weights connecting input to hidden, change == partial derivative
+change = hidden_deltas * np.reshape(self.ai, (self.ai.shape[0], 1))
+regularization = self.l2_in * self.wi
+self.wi -= self.learning_rate * (change + regularization) + self.ci * self.momentum 
+self.ci = change
+```
+
+As you can see we just added a regularization term in the back propagation algorithm which is added to the change (partial derivative) variable which in turn increases the amount that each weight is decreased by on every iteration. The self.l2_in and self.l2_out parameters are parameters which need to be tuned with some cross validation so it can get pretty time consuming to find the optimal values. With the right data it can be well worth it though.
+
 ##No more overfitting!
 
-So there are the three things that have greatly improved the performance of my neural network. Obviously there is still a lot that can be added but these offer pretty big improvements for very little effort. 
+So there are the four things that have greatly improved the performance of my neural network. Obviously there is still a lot that can be added but these offer pretty big improvements for very little effort. 
 
-Just like the last neural network post, I did not go into the math behind all of this. If you would like to take your understanding of neural networks to the next level the [Stanford deep learning tutorial](http://ufldl.stanford.edu/tutorial/) is my favorite website right now. It offers a much more indepth look at all of the algorithms for neural networks than my posts here. I find it very helpful to match each equation in the 'Multi-Layer Neural Network' tutorial with each snippet of code in my neural network script.
+Just like the last neural network post, I did not go into the math behind all of this. If you would like to take your understanding of neural networks to the next level the [Stanford deep learning tutorial](http://ufldl.stanford.edu/tutorial/) is my favorite website right now. It offers a much more indepth look at all of the algorithms for neural networks than my posts here. I find it very helpful to match each equation in the 'Multi-Layer Neural Network' tutorial with each snippet of code in my neural network script. 
 
 Additionally, many more ways to improve the training of neural networks are outlined in ['Efficient Backprop'](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf) by LeCun et al. Most of what I outlined here came from that paper. 
 
