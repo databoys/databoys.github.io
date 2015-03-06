@@ -154,7 +154,7 @@ def predict(self, X):
     return predictions
 ```
 
-That's basically it! You can see the full code [here](https://github.com/FlorianMuellerklein/Machine-Learning/blob/master/BackPropagationNN.py).
+That's basically it! You can see the full code [here](https://github.com/FlorianMuellerklein/Machine-Learning/blob/master/Old/BackPropagationNN.py).
 
 I ran this code on the digit recognition dataset provided by sklearn and it finished with an accuracy of 97%. I'd say that's pretty successful!
 
