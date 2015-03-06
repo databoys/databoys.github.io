@@ -86,3 +86,6 @@ def fit(self, patterns):
 So there are the three things that have greatly improved the performance of my neural network. Obviously there is still a lot that can be added but these offer pretty big improvements for very little effort. 
 
 Just like the last neural network post, I did not go into the math behind all of this. If you would like to take your understanding of neural networks to the next level the [Stanford deep learning tutorial](http://ufldl.stanford.edu/tutorial/) is my favorite website right now. It offers a much more indepth look at all of the algorithms for neural networks than my posts here. I find it very helpful to match each equation in the 'Multi-Layer Neural Network' tutorial with each snippet of code in my neural network script.
+
+#####My machine learning library#####
+I am in the process of creating a [machine learning library](https://github.com/FlorianMuellerklein/Machine-Learning) geared toward new users. It will not be the fastest library but the idea is to write the code in a very clear and easy to understand way so that people can go through and see exactly what each algorithm is doing. Hopefully I can create a resource that some people find useful. 
