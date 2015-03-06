@@ -67,21 +67,23 @@ If I remember right just switching out these activation functions gave me a few 
 In our previous neural network we simply initialized the weights with some random numbers. Which is good because it breaks the symmetry but there is a still a better way. We want to try and activate the sigmoid functions in their linear region so that their derivatives provide enough gradient for our learning to continue. In other words, if the output of a unit is close to the minimum or maximum of the sigmoid function it's derivative will be flat and our network will learn really slowly (there will be no gradient to descend). So how do we fix this?
 
 This part requires some 'coordination' between the input data and the weights for it to be effective. For the input data, we just need to scale them to have a mean of 0. So then we will draw the weights randomly again but this time we will tell numpy to give them a mean of 0 and a standard devation of the negative square root of the size of the layer feeding into the node.
+
 ``` python
 input_range = 1.0 / self.input ** (1/2)
 output_range = 1.0 / self.hidden ** (1/2)
 self.wi = np.random.normal(loc = 0, scale = input_range, size = (self.input, self.hidden))
 self.wo = np.random.normal(loc = 0, scale = output_range, size = (self.hidden, self.output))
 ```
+
 #####Shuffling training examples#####
 
 This next tip was probably the most simple and effective improvement in the code. On each iteration during training we will now shuffle the order of the data before it is fed into the network. Networks learn the fastest from the most unexpected sample. Lets say that all of our data was neat and organized. All of our 'ones', 'twos', and 'threes' were grouped together. If we fed the data into the network like this it will get really good at classifying 'ones', but then once it gets it's first 'two' it will have no way of even getting close to classifying it. The network will then have to start learning 'twos' and forget about 'ones'. If we randomize the inputs on every iteration the network will have an easier time creating weights that can generalize between all of the classes. 
 
 Adding this to our code is as easy as ... 
+
 ``` python
 import random 
-...
-...
+
 def fit(self, patterns):
                 
     for i in range(self.iterations):
@@ -90,8 +92,8 @@ def fit(self, patterns):
         for p in patterns:
 			feed_forward(X)
 			backprop_function(y)
-...
 ```
+
 #####No more overfitting!#####
 
 So there are the three things that have greatly improved the performance of my neural network. Obviously there is still a lot that can be added but these offer pretty big improvements for very little effort. 
