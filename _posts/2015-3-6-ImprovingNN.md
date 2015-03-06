@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using and improving our neural network (96% MNIST)
+title: Improving our neural network (96% MNIST)
 published: true
 ---
 
