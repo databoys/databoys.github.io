@@ -93,6 +93,7 @@ def fit(self, patterns):
 			feed_forward(X)
 			backprop_function(y)
 ```
+Where patterns is the list of X and y values for the training dataset.
 
 ##Regularization
 
