@@ -33,24 +33,31 @@ def dtanh(y):
 ```
 
 The best part is that we can swap these activations into our back propagation algorithm with very few changes. In order to use the tanh function in our hidden layer all we have to do is swap it out for the sigmoid. 
+
 ``` python
 sum = np.dot(self.wi.T, self.ai)
 self.ah = tanh(sum)
 ```
+
 When we calculate the gradient for the tanh hidden units we will just use the new tanh derivative that we defined earlier in place of the logistic sigmoid derivative. 
+
 ``` python
 error = np.dot(self.wo, output_deltas)
 hidden_deltas = dtanh(self.ah) * error
 ```
 
 To use the softmax output layer we will make the most drastic changes. We will go from this
+
 ``` python
 output_deltas = dsigmoid(self.ao) * -(targets - self.ao)
 ```
+
 to this
+
 ``` python
 output_deltas = -(targets - self.ao)
 ```
+
 Again, I am skipping the math in these posts and just focusing on readable python code and a higher level of understanding. But, essentially this is what is happening: if you were to work out the gradient descent algorithm with the derivative of the softmax function you will end up cancelling terms and arrive at -(t - yhat) for the error calculation, where t is the true value and yhat is the predicted value. Awesome!
 
 If I remember right just switching out these activation functions gave me a few percentage points of improvement.
