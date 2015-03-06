@@ -12,7 +12,7 @@ The new code can be found [here](https://github.com/FlorianMuellerklein/Machine-
 
 One thing to keep in mind is that most of these improvements have the effect of keeping the weights low (closer to 0). For the same reason that regularization works for regression, having low weight values in a neural network can help it generalize better. Since it's very easy to overfit with a neural network anything we'll take whatever we can. 
 
-#####Activation functions#####
+####Activation functions####
 
 The first thing that I did was add two more activation (transfer) functions that we can use. Each one has certain advantages over the logistic sigmoid that we started with. The biggest improvement came from changing the hidden layer activation function from the logistic sigmoid to the hyperbolic tangent. Both are considered sigmoid functions but the logistic is a range of (0, 1) and the hyperbolic tangent (tanh) has a range of (-1, 1). The idea here is that since the tanh function is centered around 0 the outputs that it produces will, on average, be closer to 0. The outputs from the logistic sigmoid will always be greater than 0 so the mean of the outputs will also be greater than 0. 
 
@@ -62,7 +62,7 @@ Again, I am skipping the math in these posts and just focusing on readable pytho
 
 If I remember right just switching out these activation functions gave me a few percentage points of improvement.
 
-#####Initializing weights#####
+####Initializing weights####
 
 In our previous neural network we simply initialized the weights with some random numbers. Which is good because it breaks the symmetry but there is a still a better way. We want to try and activate the sigmoid functions in their linear region so that their derivatives provide enough gradient for our learning to continue. In other words, if the output of a unit is close to the minimum or maximum of the sigmoid function it's derivative will be flat and our network will learn really slowly (there will be no gradient to descend). So how do we fix this?
 
@@ -75,7 +75,7 @@ self.wi = np.random.normal(loc = 0, scale = input_range, size = (self.input, sel
 self.wo = np.random.normal(loc = 0, scale = output_range, size = (self.hidden, self.output))
 ```
 
-#####Shuffling training examples#####
+####Shuffling training examples####
 
 This next tip was probably the most simple and effective improvement in the code. On each iteration during training we will now shuffle the order of the data before it is fed into the network. Networks learn the fastest from the most unexpected sample. Lets say that all of our data was neat and organized. All of our 'ones', 'twos', and 'threes' were grouped together. If we fed the data into the network like this it will get really good at classifying 'ones', but then once it gets it's first 'two' it will have no way of even getting close to classifying it. The network will then have to start learning 'twos' and forget about 'ones'. If we randomize the inputs on every iteration the network will have an easier time creating weights that can generalize between all of the classes. 
 
@@ -94,7 +94,7 @@ def fit(self, patterns):
 			backprop_function(y)
 ```
 
-#####No more overfitting!#####
+####No more overfitting!####
 
 So there are the three things that have greatly improved the performance of my neural network. Obviously there is still a lot that can be added but these offer pretty big improvements for very little effort. 
 
@@ -104,6 +104,6 @@ Additionally, many more ways to improve the training of neural networks are outl
 
 The biggest takeway from all of these tips is that a mean near zero will make you a hero.
 
-#####My machine learning library#####
+####My machine learning library####
 
 I am in the process of creating a [machine learning library](https://github.com/FlorianMuellerklein/Machine-Learning) geared toward new users. It will not be the fastest library but the idea is to write the code in a very clear and easy to understand way so that people can go through and see exactly what each algorithm is doing. Hopefully it will be a resource that some people find useful. 
