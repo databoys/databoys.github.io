@@ -97,7 +97,7 @@ def backPropagate(self, targets, N):
     # the delta tell you which direction to change the weights
     output_deltas = [0.0] * self.output
     for k in range(self.output):
-        error = targets[k] - self.ao[k]
+        error = -(targets[k] - self.ao[k])
         output_deltas[k] = dsigmoid(self.ao[k]) * error
     # calculate error terms for hidden
     # delta tells you which direction to change the weights
@@ -111,13 +111,13 @@ def backPropagate(self, targets, N):
     for j in range(self.hidden):
         for k in range(self.output):
             change = output_deltas[k] * self.ah[j]
-            self.wo[j][k] += N * change + self.co[j][k]
+            self.wo[j][k] -= N * change + self.co[j][k]
             self.co[j][k] = change
     # update the weights connecting input to hidden
     for i in range(self.input):
         for j in range(self.hidden):
             change = hidden_deltas[j] * self.ai[i]
-            self.wi[i][j] += N * change + self.ci[i][j]
+            self.wi[i][j] -= N * change + self.ci[i][j]
             self.ci[i][j] = change
     # calculate error
     error = 0.0
